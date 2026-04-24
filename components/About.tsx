@@ -62,9 +62,13 @@ export default function About() {
           {/* Right column: text + stats */}
           <div>
             <div className="about-text">
-              <p className="reveal reveal-d1" dangerouslySetInnerHTML={{ __html: t.aboutP1 }} />
-              <p className="reveal reveal-d2" dangerouslySetInnerHTML={{ __html: t.aboutP2 }} />
-              <p className="reveal reveal-d3" dangerouslySetInnerHTML={{ __html: t.aboutP3 }} />
+              <p className="reveal reveal-d1">
+                {t.aboutP1.bold && <strong>{t.aboutP1.bold}</strong>}{t.aboutP1.rest}
+              </p>
+              <p className="reveal reveal-d2">{t.aboutP2.rest}</p>
+              <p className="reveal reveal-d3">
+                {t.aboutP3.rest}<strong>{t.aboutP3.boldInline}</strong>{t.aboutP3.rest2}
+              </p>
             </div>
             <div className="stats reveal reveal-d2">
               {t.stats.map((s) => (
