@@ -1,55 +1,78 @@
+'use client'
+
+import Image from 'next/image'
+import { useReveal } from '@/hooks/usePortfolio'
+import { useLang } from '@/context/LanguageContext'
+
 export default function About() {
+  useReveal()
+  const { t, lang } = useLang()
+
   return (
     <section id="about" className="grid-bg">
       <div className="container">
-        <div className="sec-label"><span>//</span> SOBRE</div>
-        <div className="sec-title reveal">Construindo sistemas que entregam valor</div>
-        <div className="sec-sub reveal">Não apenas pesquisa — sistemas em produção que escalam.</div>
+        <div className="sec-eyebrow">{t.aboutLabel}</div>
+        <div className="sec-title reveal">{t.aboutTitle}</div>
+        <div className="sec-sub reveal">{t.aboutSub}</div>
         <div className="about-grid">
+          {/* Left column: photo + terminal */}
           <div className="reveal">
-            <div className="about-img">
-              <div style={{ width: '100%' }}>
-                <div className="terminal-bar">
-                  <span className="tb tb-r" />
-                  <span className="tb tb-y" />
-                  <span className="tb tb-g" />
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#555', marginLeft: '8px' }}>
-                    terminal
-                  </span>
+            <div className="about-photo-wrap">
+              <Image
+                src="/about-photo.jpg"
+                alt="Vitor Cardoso workspace"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+              <div className="about-photo-overlay" />
+              <span className="about-photo-label">~/workspace</span>
+            </div>
+            <div className="terminal-card">
+              <div className="terminal-header">
+                <span className="dot dot-r" />
+                <span className="dot dot-y" />
+                <span className="dot dot-g" />
+                <span className="terminal-title">~/vitor-m-cardoso</span>
+              </div>
+              <div className="terminal-body">
+                <div><span className="t-prompt">$ </span><span className="t-cmd">whoami</span></div>
+                <div><span className="t-prompt">&gt; </span><span className="t-cyan">vitor-m-cardoso</span></div>
+                <br />
+                <div><span className="t-prompt">$ </span><span className="t-cmd">cat</span> skills.txt</div>
+                <div><span className="t-prompt">&gt; </span><span className="t-out">python, typescript, nextjs,</span></div>
+                <div><span className="t-prompt">&gt; </span><span className="t-out">kubernetes, pytorch, langchain</span></div>
+                <div><span className="t-prompt">&gt; </span><span className="t-out">SQL, NoSQL, ML/AI</span></div>
+                <br />
+                <div><span className="t-prompt">$ </span><span className="t-cmd">echo</span> $STATUS</div>
+                <div>
+                  <span className="t-prompt">&gt; </span>
+                  <span className="t-str">{t.terminalStatus}</span>
                 </div>
-                <div className="code-preview">
-                  <div><span style={{ color: '#555' }}>$</span> <span className="fn">whoami</span></div>
-                  <div><span style={{ color: '#555' }}>&gt;</span> vitor-m-cardoso</div>
-                  <br />
-                  <div><span style={{ color: '#555' }}>$</span> <span className="fn">cat</span> skills.txt</div>
-                  <div><span style={{ color: '#555' }}>&gt;</span> python, typescript, nextjs,</div>
-                  <div><span style={{ color: '#555' }}>&gt;</span> kubernetes, pytorch, langchain</div>
-                  <div><span style={{ color: '#555' }}>&gt;</span> SQL, NoSQL, ML/AI</div>
-                  <br />
-                  <div><span style={{ color: '#555' }}>$</span> <span className="fn">echo</span> $STATUS</div>
-                  <div><span style={{ color: '#555' }}>&gt;</span> <span className="str">codando o futuro</span></div>
+                <br />
+                <div>
+                  <span className="t-prompt">$ </span>
+                  <span className="t-out">_</span>
+                  <span className="hero-cursor" />
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Right column: text + stats */}
           <div>
-            <div className="about-text reveal reveal-delay-1">
-              <p>Sou Vitor Cardoso, um desenvolvedor fullstack. Tenho experiência na construção de sistemas de ponta a ponta.</p>
-              <p>Meu trabalho abrange backend, frontend, banco de dados, segurança e todo fluxo que envolve a criação de um sistema. Acredito que o melhor sistema não é o mais complexo — é o que confiávelmente entrega valor aos usuários.</p>
+            <div className="about-text">
+              <p className="reveal reveal-d1" dangerouslySetInnerHTML={{ __html: t.aboutP1 }} />
+              <p className="reveal reveal-d2" dangerouslySetInnerHTML={{ __html: t.aboutP2 }} />
+              <p className="reveal reveal-d3" dangerouslySetInnerHTML={{ __html: t.aboutP3 }} />
             </div>
-            <div className="stats-grid reveal reveal-delay-2">
-              <div className="stat-card">
-                <div className="stat-num">30+</div>
-                <div className="stat-lbl">Projetos Entregues</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-num">2+</div>
-                <div className="stat-lbl">Anos de Experiência</div>
-              </div>
-              <div className="stat-card" style={{ gridColumn: '1 / -1' }}>
-                <div className="stat-num">∞</div>
-                <div className="stat-lbl">Artigos Lidos</div>
-              </div>
+            <div className="stats reveal reveal-d2">
+              {t.stats.map((s) => (
+                <div key={s.num + s.lbl} className="stat">
+                  <div className="stat-num">{s.num}</div>
+                  <div className="stat-lbl">{s.lbl}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

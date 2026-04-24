@@ -1,63 +1,72 @@
-const BriefcaseIcon = () => (
-  <svg viewBox="0 0 24 24">
-    <rect x="2" y="7" width="20" height="14" rx="2" />
-    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-    <line x1="12" y1="12" x2="12" y2="16" />
-    <line x1="10" y1="14" x2="14" y2="14" />
+'use client'
+
+import { useReveal } from '@/hooks/usePortfolio'
+import { useLang } from '@/context/LanguageContext'
+
+const expTags = [
+  ['Python', 'Node', 'TypeScript', 'AI', 'DataViz'],
+  ['TypeScript', 'Docker', 'SQL', 'Node.js'],
+]
+
+const CalIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2">
+    <rect x="3" y="4" width="18" height="18" rx="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
   </svg>
 )
 
 export default function Experience() {
+  useReveal()
+  const { t } = useLang()
+
   return (
     <section id="experience" className="grid-bg">
       <div className="container">
-        <div className="sec-label"><span>//</span> EXPERIÊNCIA</div>
-        <div className="sec-title reveal">Onde já trabalhei</div>
-        <div className="exp-timeline">
+        <div className="sec-eyebrow">{t.expLabel}</div>
+        <div className="sec-title reveal">{t.expTitle}</div>
+        <div className="exp-timeline" style={{ marginTop: 64 }}>
           <div className="timeline-line" />
-
-          {/* CI&T — esquerda */}
-          <div className="exp-item">
-            <div className="exp-card reveal reveal-delay-1">
-              <div className="exp-date"><BriefcaseIcon /> 2025 — Presente</div>
-              <div className="exp-company">CI&amp;T</div>
-              <div className="exp-role">Desenvolvedor backend</div>
-              <div className="exp-desc">
-                Participo do desenvolvimento de um sistema responsável pela análise de métricas relacionado à
-                qualidade do uso de IA que suporta +8000 usuários.
-              </div>
-              <div className="tags">
-                <span className="tag">Python</span>
-                <span className="tag">Node</span>
-                <span className="tag">TypeScript</span>
-                <span className="tag">AI</span>
-                <span className="tag">DataViz</span>
-              </div>
+          {t.expItems.map((exp, i) => (
+            <div key={i} className="exp-item">
+              {i % 2 === 0 ? (
+                <>
+                  <div className={`exp-card shimmer-card reveal reveal-d${i + 1}`}>
+                    <div className="exp-meta">
+                      <CalIcon />
+                      {exp.date}
+                    </div>
+                    <div className="exp-company">{exp.company}</div>
+                    <div className="exp-role">{exp.role}</div>
+                    <div className="exp-desc">{exp.desc}</div>
+                    <div className="tags">
+                      {expTags[i].map((tag) => <span key={tag} className="tag">{tag}</span>)}
+                    </div>
+                  </div>
+                  <div className="exp-dot-col"><div className="exp-dot" /></div>
+                  <div className="exp-empty" />
+                </>
+              ) : (
+                <>
+                  <div className="exp-empty" />
+                  <div className="exp-dot-col"><div className="exp-dot" /></div>
+                  <div className={`exp-card shimmer-card reveal reveal-d${i + 1}`}>
+                    <div className="exp-meta">
+                      <CalIcon />
+                      {exp.date}
+                    </div>
+                    <div className="exp-company">{exp.company}</div>
+                    <div className="exp-role">{exp.role}</div>
+                    <div className="exp-desc">{exp.desc}</div>
+                    <div className="tags">
+                      {expTags[i].map((tag) => <span key={tag} className="tag">{tag}</span>)}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-            <div className="exp-dot-col"><div className="exp-dot" /></div>
-            <div className="exp-empty" />
-          </div>
-
-          {/* Trybe — direita */}
-          <div className="exp-item">
-            <div className="exp-empty" />
-            <div className="exp-dot-col"><div className="exp-dot" /></div>
-            <div className="exp-card reveal reveal-delay-1">
-              <div className="exp-date"><BriefcaseIcon /> 2022 — 2024</div>
-              <div className="exp-company">Trybe</div>
-              <div className="exp-role">Instrutor de Desenvolvimento Web</div>
-              <div className="exp-desc">
-                Responsável pela formação técnica em desenvolvimento web de mais de 2.000 estudantes
-                distribuídos em 14 turmas.
-              </div>
-              <div className="tags">
-                <span className="tag">TypeScript</span>
-                <span className="tag">Docker</span>
-                <span className="tag">SQL</span>
-                <span className="tag">Node.js</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
