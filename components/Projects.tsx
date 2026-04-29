@@ -54,8 +54,29 @@ export default function Projects() {
             </div>
           </div>
 
+          {/* AI Financial Assistant */}
+          <div className="project-card shimmer-card reveal reveal-d3">
+            <div className="project-top">
+              <div className="project-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M3 7h15a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7z" />
+                  <path d="M3 7a2 2 0 0 1 2-2h11" />
+                  <circle cx="17" cy="13.5" r="1.25" fill="currentColor" />
+                </svg>
+              </div>
+              <a href="#" className="project-link-arrow">↗</a>
+            </div>
+            <div className="project-title">AI Financial Assistant</div>
+            <div className="project-desc">{t.aiFinancialDesc}</div>
+            <div className="tags">
+              {['Next.js', 'React', 'NestJS', 'Prisma', 'PostgreSQL', 'Groq', 'Gemini', 'Docker'].map((tag) => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+
           {/* Placeholder */}
-          <div className="placeholder-card shimmer-card reveal reveal-d3">
+          <div className="placeholder-card shimmer-card reveal reveal-d4">
             <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
               <line x1="12" y1="5" x2="12" y2="19" />
               <line x1="5" y1="12" x2="19" y2="12" />

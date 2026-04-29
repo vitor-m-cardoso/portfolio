@@ -7,7 +7,7 @@ const skillData = [
   [
     { name: 'Python', pct: 95 },
     { name: 'TypeScript', pct: 91 },
-    { name: 'Node.js', pct: 91 },
+    { name: 'Node.js / Nest.js', pct: 91 },
     { name: 'React / Next.js', pct: 75 },
   ],
   [
@@ -17,10 +17,10 @@ const skillData = [
     { name: 'Kubernetes', pct: 68 },
   ],
   [
-    { name: 'Google Gemini', pct: 88 },
+    { name: 'Anthropic Claude', pct: 90 },
     { name: 'LangChain', pct: 80 },
-    { name: 'OpenAI API', pct: 85 },
-    { name: 'Hugging Face', pct: 72 },
+    { name: 'PyTorch', pct: 78 },
+    { name: 'pgvector', pct: 77 },
   ],
 ]
 

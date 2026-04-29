@@ -41,6 +41,7 @@ export const translations = {
     projectPlaceholder: '+ em breve',
     projectDesc: 'Uma ferramenta para e-commerce que automatiza a análise de preços para produtos equivalentes, oferecendo sugestões de preço atualizadas com o uso de IA.',
     aiLabDesc: 'Ferramenta que recebe uma URL, extrai a estrutura visual da página e gera um Design System profissional e reutilizável via IA.',
+    aiFinancialDesc: 'Dashboard financeiro pessoal com IA generativa para categorização automática de gastos e geração sob demanda de insights sobre padrões de consumo.',
 
     skillsLabel: 'HABILIDADES',
     skillsTitle: 'Tecnologias',
@@ -98,6 +99,7 @@ export const translations = {
     projectPlaceholder: '+ coming soon',
     projectDesc: 'An e-commerce tool that automates price analysis for equivalent products, offering updated price suggestions using AI.',
     aiLabDesc: 'A tool that takes a URL, extracts the visual structure of the page, and generates a professional, reusable Design System via AI.',
+    aiFinancialDesc: 'Personal finance dashboard with generative AI for automatic expense categorization and on-demand generation of insights into spending patterns.',
 
     skillsLabel: 'SKILLS',
     skillsTitle: 'Technologies',
